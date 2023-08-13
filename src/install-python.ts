@@ -3,14 +3,16 @@ import * as core from '@actions/core';
 import * as tc from '@actions/tool-cache';
 import * as exec from '@actions/exec';
 import {ExecOptions} from '@actions/exec/lib/interfaces';
-import {IS_WINDOWS, IS_LINUX} from './utils';
+import {IS_WINDOWS, IS_LINUX, isGhes} from './utils';
 
 const TOKEN = core.getInput('token');
 const AUTH = !TOKEN ? undefined : `token ${TOKEN}`;
-const MANIFEST_REPO_OWNER = 'actions';
-const MANIFEST_REPO_NAME = 'python-versions';
-const MANIFEST_REPO_BRANCH = 'main';
-export const MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
+const MANIFEST_REPO_OWNER = core.getInput('versions-manifest-repo-owner') ?? 'actions';
+const MANIFEST_REPO_NAME = core.getInput('versions-manifest-repo-name') ?? 'python-versions';
+const MANIFEST_REPO_BRANCH = core.getInput('versions-manifest-repo-branch') ?? 'main';
+const GH_URL = process.env['GITHUB_SERVER_URL'] || 'https://github.com'
+const MANIFEST_REPO_SERVER = isGhes() ? `${GH_URL}/raw` : `https://raw.githubusercontent.com`
+export const MANIFEST_URL = `${MANIFEST_REPO_SERVER}/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 
 export async function findReleaseFromManifest(
   semanticVersionSpec: string,
