@@ -1,0 +1,50 @@
+[
+  {
+    "version": "3.9.16",
+    "stable": true,
+    "release_url": "https://github.com/actions/python-versions/releases/tag/3.9.16-3647595251",
+    "files": [
+      {
+        "filename": "python-3.9.16-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/python-versions/releases/download/3.9.16-3647595251/python-3.9.16-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "python-3.9.16-linux-18.04-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "platform_version": "18.04",
+        "download_url": "https://github.com/actions/python-versions/releases/download/3.9.16-3647595251/python-3.9.16-linux-18.04-x64.tar.gz"
+      },
+      {
+        "filename": "python-3.9.16-linux-20.04-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "platform_version": "20.04",
+        "download_url": "https://github.com/actions/python-versions/releases/download/3.9.16-3647595251/python-3.9.16-linux-20.04-x64.tar.gz"
+      },
+      {
+        "filename": "python-3.9.16-linux-18.04-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "platform_version": "7",
+        "download_url": "https://github.com/actions/python-versions/releases/download/3.9.16-3647595251/python-3.9.16-linux-18.04-x64.tar.gz"
+      },
+      {
+        "filename": "python-3.9.16-linux-20.04-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "platform_version": "8",
+        "download_url": "https://github.com/actions/python-versions/releases/download/3.9.16-3647595251/python-3.9.16-linux-20.04-x64.tar.gz"
+      },
+      {
+        "filename": "python-3.9.16-linux-22.04-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "platform_version": "22.04",
+        "download_url": "https://github.com/actions/python-versions/releases/download/3.9.16-3647595251/python-3.9.16-linux-22.04-x64.tar.gz"
+      }
+    ]
+  }
+]
