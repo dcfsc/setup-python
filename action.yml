@@ -26,6 +26,8 @@ inputs:
   allow-prereleases:
     description: "When 'true', a version range passed to 'python-version' input will match prerelease versions if no GA versions are found. Only 'x.y' version range is supported for CPython."
     default: false
+  versions-manifest-url:
+    description: "Used to download prebuilt python binaries"
 outputs:
   python-version:
     description: "The installed Python or PyPy version. Useful when given a version range as input."
