@@ -69683,7 +69683,7 @@ const utils_1 = __nccwpck_require__(1314);
 const TOKEN = core.getInput('token');
 const AUTH = !TOKEN ? undefined : `token ${TOKEN}`;
 const MANIFEST_REPO_OWNER = 'ganadist';
-const MANIFEST_REPO_NAME = 'python-versions';
+const MANIFEST_REPO_NAME = 'setup-python';
 const MANIFEST_REPO_BRANCH = 'main';
 exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
