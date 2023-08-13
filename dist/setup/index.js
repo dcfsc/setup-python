@@ -10380,7 +10380,7 @@ function _findMatch(versionSpec, stable, candidates, archFilter) {
                     let chk = item.arch === archFilter && item.platform === platFilter;
                     if (chk && item.platform_version) {
                         const osVersion = module.exports._getOsVersion();
-		        core.info(`osVersion: ${osVersion]} platform_version: ${item.platform_version}`)
+		        core.info(`osVersion: ${osVersion} platform_version: ${item.platform_version}`)
                         if (osVersion === item.platform_version) {
                             chk = true;
                         }
