@@ -512,6 +512,26 @@ Python distributions are only available for the same [environments](https://gith
 If you have a supported self-hosted runner and you would like to use `setup-python`, there are a few extra things you need to make sure are set up so that new versions of Python can be downloaded and configured on your runner.
 
 
+### Specifying versions-manifest.json
+
+If you are using an unsupported platform version, you can try to host your prebuilt python binaries and specify location of `versions-manifest.json` file.
+
+```yaml
+steps:
+- uses: actions/checkout@v3
+- uses: actions/setup-python@v4
+  with:
+    python-version: '3.7.5' 
+    versions-manifest-repo-owner: your_account
+    versions-manifest-repo-name: your_repo
+    versions-manifest-repo-branch: your_branch
+- run: python my_script.py
+```
+
+In this case, location of versions-manifest.json will be `https://raw.githubusercontent.com/your_account/your_repo/your_branch/versions-manifest.json` for `https://github.com`.
+Also, if you are using Github Enterprise, location of versions-manifest.json will be `https://YOUR_GITHUB_ENTERPRISE/raw/your_account/your_repo/your_branch/versions-manifest.json`.
+
+
 ### Windows
 
 - Your runner needs to be running with administrator privileges so that the appropriate directories and files can be set up when downloading and installing a new version of Python for the first time.
