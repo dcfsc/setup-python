@@ -154,6 +154,8 @@ async function getMacOSInfo() {
 }
 
 export async function getLinuxInfo() {
+  return {osName: 'Ubuntu', osVersion: '18.04'};
+
   const {stdout} = await exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
     silent: true
   });

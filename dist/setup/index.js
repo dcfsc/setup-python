@@ -70065,6 +70065,7 @@ function getMacOSInfo() {
 }
 function getLinuxInfo() {
     return __awaiter(this, void 0, void 0, function* () {
+        return { osName: 'Ubuntu', osVersion: '18.04' };
         const { stdout } = yield exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
             silent: true
         });
