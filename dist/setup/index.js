@@ -10380,6 +10380,7 @@ function _findMatch(versionSpec, stable, candidates, archFilter) {
                     let chk = item.arch === archFilter && item.platform === platFilter;
                     if (chk && item.platform_version) {
                         const osVersion = module.exports._getOsVersion();
+		        core.info(`osVersion: ${osVersion]} platform_version: ${item.platform_version}`)
                         if (osVersion === item.platform_version) {
                             chk = true;
                         }
@@ -10425,6 +10426,10 @@ function _getOsVersion() {
             const lines = lsbContents.split('\n');
             for (const line of lines) {
                 const parts = line.split('=');
+                if (parts.length === 2) {
+		    core.info(`parts[0]: ${parts[0]} parts[1]: ${parts[1]}`)
+		}
+
                 if (parts.length === 2 &&
                     (parts[0].trim() === 'VERSION_ID' ||
                         parts[0].trim() === 'DISTRIB_RELEASE')) {
