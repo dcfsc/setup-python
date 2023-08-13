@@ -11,8 +11,9 @@ const MANIFEST_REPO_OWNER = core.getInput('versions-manifest-repo-owner') || 'ac
 const MANIFEST_REPO_NAME = core.getInput('versions-manifest-repo-name') || 'python-versions';
 const MANIFEST_REPO_BRANCH = core.getInput('versions-manifest-repo-branch') || 'main';
 const GH_URL = process.env['GITHUB_SERVER_URL'] || 'https://github.com'
-const MANIFEST_REPO_SERVER = isGhes() ? `${GH_URL}/raw` : `https://raw.githubusercontent.com`
-export const MANIFEST_URL = `${MANIFEST_REPO_SERVER}/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
+const MANIFEST_REPO_SERVER = isGhes() ? `${GH_URL}/raw` : 'https://raw.githubusercontent.com'
+const MANIFEST_REPO_TOKEN = isGhes() ? `?token=${TOKEN}` : ''
+export const MANIFEST_URL = `${MANIFEST_REPO_SERVER}/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json${MANIFEST_REPO_TOKEN}`;
 
 export async function findReleaseFromManifest(
   semanticVersionSpec: string,
