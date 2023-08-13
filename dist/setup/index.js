@@ -10376,10 +10376,12 @@ function _findMatch(versionSpec, stable, candidates, archFilter) {
             if (semver.satisfies(version, versionSpec) &&
                 (!stable || candidate.stable === stable)) {
                 file = candidate.files.find(item => {
-                    core_1.debug(`${item.arch}===${archFilter} && ${item.platform}===${platFilter}`);
+                    core_1.info(`${item.arch}===${archFilter} && ${item.platform}===${platFilter}`);
                     let chk = item.arch === archFilter && item.platform === platFilter;
+                    core_1.info(`chk = ${chk}`);
                     if (chk && item.platform_version) {
                         const osVersion = module.exports._getOsVersion();
+                        core_1.info(`osVersion : ${osVersion}===${item.platform}`);
                         if (osVersion === item.platform_version) {
                             chk = true;
                         }
