@@ -10377,7 +10377,9 @@ function _findMatch(versionSpec, stable, candidates, archFilter) {
                 (!stable || candidate.stable === stable)) {
                 file = candidate.files.find(item => {
                     core_1.debug(`${item.arch}===${archFilter} && ${item.platform}===${platFilter}`);
+                    core_1.info(`${item.arch}===${archFilter} && ${item.platform}===${platFilter}`);
                     let chk = item.arch === archFilter && item.platform === platFilter;
+                    core_1.info(`chk ${chk} item.platform_version ${item.platform_version}`);
                     if (chk && item.platform_version) {
                         const osVersion = module.exports._getOsVersion();
                         core_1.info(`osVersion: ${osVersion} platform_version: ${item.platform_version}`)
