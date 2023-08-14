@@ -10376,12 +10376,10 @@ function _findMatch(versionSpec, stable, candidates, archFilter) {
             if (semver.satisfies(version, versionSpec) &&
                 (!stable || candidate.stable === stable)) {
                 file = candidate.files.find(item => {
-                    core_1.info(`${item.arch}===${archFilter} && ${item.platform}===${platFilter}`);
+                    core_1.debug(`${item.arch}===${archFilter} && ${item.platform}===${platFilter}`);
                     let chk = item.arch === archFilter && item.platform === platFilter;
-                    core_1.info(`chk = ${chk}`);
                     if (chk && item.platform_version) {
                         const osVersion = module.exports._getOsVersion();
-                        core_1.info(`osVersion : ${osVersion}===${item.platform}`);
                         if (osVersion === item.platform_version) {
                             chk = true;
                         }
@@ -70530,9 +70528,7 @@ const AUTH = !TOKEN ? undefined : `token ${TOKEN}`;
 const MANIFEST_REPO_OWNER = core.getInput('versions-manifest-repo-owner') || 'actions';
 const MANIFEST_REPO_NAME = core.getInput('versions-manifest-repo-name') || 'python-versions';
 const MANIFEST_REPO_BRANCH = core.getInput('versions-manifest-repo-branch') || 'main';
-const GH_URL = process.env['GITHUB_SERVER_URL'] || 'https://github.com';
-const MANIFEST_REPO_SERVER = utils_1.isGhes() ? `${GH_URL}/raw` : `https://raw.githubusercontent.com`;
-exports.MANIFEST_URL = `${MANIFEST_REPO_SERVER}/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
+exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!manifest) {
