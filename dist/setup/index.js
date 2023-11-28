@@ -70908,12 +70908,20 @@ function getMacOSInfo() {
 }
 function getLinuxInfo() {
     return __awaiter(this, void 0, void 0, function* () {
-        const { stdout } = yield exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
-            silent: true
-        });
-        const [osName, osVersion] = stdout.trim().split('\n');
-        core.debug(`OS Name: ${osName}, Version: ${osVersion}`);
-        return { osName: osName, osVersion: osVersion };
+        try {
+            const { stdout } = yield exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
+                silent: true
+            });
+            const [osName, osVersion] = stdout.trim().split('\n');
+            core.debug(`OS Name: ${osName}, Version: ${osVersion}`);
+            return { osName: osName, osVersion: osVersion };
+        }
+        catch (err) {
+            // ok, maybe its RHEL
+            const [osName, osVersion] = ["RHEL", "7"];
+            core.debug(`OS Name: ${osName}, Version: ${osVersion}`);
+            return { osName: osName, osVersion: osVersion };
+        }
     });
 }
 exports.getLinuxInfo = getLinuxInfo;

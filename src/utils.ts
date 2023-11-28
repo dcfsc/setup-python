@@ -154,15 +154,23 @@ async function getMacOSInfo() {
 }
 
 export async function getLinuxInfo() {
-  const {stdout} = await exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
-    silent: true
-  });
+  try {
+    const {stdout} = await exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
+      silent: true
+    });
+    const [osName, osVersion] = stdout.trim().split('\n');
 
-  const [osName, osVersion] = stdout.trim().split('\n');
+    core.debug(`OS Name: ${osName}, Version: ${osVersion}`);
 
-  core.debug(`OS Name: ${osName}, Version: ${osVersion}`);
+    return {osName: osName, osVersion: osVersion};
 
-  return {osName: osName, osVersion: osVersion};
+  } catch(err) {
+    // ok, maybe its RHEL
+    const [osName, osVersion] = ["RHEL", "7"]
+    core.debug(`OS Name: ${osName}, Version: ${osVersion}`);
+    return {osName: osName, osVersion: osVersion};
+  }
+
 }
 
 export async function getOSInfo() {
